@@ -72,6 +72,21 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 ```
 
+For Windows 10 users as of 3.2.0, do the following additional steps to the above:
+
+In `resources\app.asar.unpacked\src\static\ssb-interop.js` add the following at the end of the above code (tested for Windows 10 users):
+
+```
+document.addEventListener('DOMContentLoaded', function() {
+  $.ajax({
+   url: 'https://cdn.rawgit.com/laCour/slack-night-mode/master/css/raw/black.css',
+   success: function(css) {
+     $("<style></style>").appendTo('head').html(css);
+   }
+ });
+});
+```
+
 Notice that you can edit any of the theme colors using the custom CSS (for
 the already-custom theme.) Also, you can put any CSS URL you want here,
 so you don't necessarily need to create an entire fork to change some small styles.
